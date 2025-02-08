@@ -15,7 +15,7 @@ export class News extends Component {
   async componentDidMount() {
     // Correct lifecycle method for data fetching
 
-    let url = `https://newsapi.org/v2/top-headlines?category=business&apiKey=5532c081141b4ef2937c8ba92f1336bf`;
+    let url = `https://newsapi.org/v2/everything?q=tesla&from=2025-01-08&sortBy=publishedAt&apiKey=5532c081141b4ef2937c8ba92f1336bf&pagesize=18`;
     this.setState({ loading: true });
     let data = await fetch(url);
     let parsedData = await data.json();
@@ -23,34 +23,32 @@ export class News extends Component {
     this.setState({
       articles: parsedData.articles,
       loading: false,
-      TotalResult : parsedData.totalResults
-    })
+      TotalResult: parsedData.totalResults,
+    });
   }
-  
+
   handelNextClick = async () => {
     console.log("Next");
-    if((this.state.page + 1 > Math.ceil(this.state.TotalResult/20))){
+    if (this.state.page + 1 > Math.ceil(this.state.TotalResult / 18)) {
+    } else {
+      let url = `https://newsapi.org/v2/everything?q=tesla&from=2025-01-08&sortBy=publishedAt&apiKey=5532c081141b4ef2937c8ba92f1336bf&page=${this.state.page+1}&pagesize=18`
+      
+         
+      this.setState({ loading: true });
+      let data = await fetch(url);
+      let parsedData = await data.json();
+      console.log(parsedData);
+      this.setState({
+        articles: parsedData.articles,
+        loading: false,
+        page: this.state.page + 1,
+      });
     }
-    else{
-  let url =`https://newsapi.org/v2/top-headlines?category=business&apiKey=5532c081141b4ef2937c8ba92f1336bf&page=${this.state.page + 1} &pagesize=20`;
-  this.setState({ loading: true });
-  let data = await fetch(url);
-  let parsedData = await data.json();
-  console.log(parsedData);
-  this.setState({
-    articles: parsedData.articles,
-    loading: false,
-    page: this.state.page + 1
-    
-  });
-}
-  
-
-  }
+  };
   handelpreviousClick = async () => {
-
-
-    let url = `https://newsapi.org/v2/top-headlines?category=business&apiKey=5532c081141b4ef2937c8ba92f1336bf&page=${this.state.page - 1} &pagesize=20`;
+    let url = `https://newsapi.org/v2/everything?q=tesla&from=2025-01-08&sortBy=publishedAt&apiKey=5532c081141b4ef2937c8ba92f1336bf&page=${this.state.page-1}&pagesize=18`
+   
+       
     this.setState({ loading: true });
     let data = await fetch(url);
     let parsedData = await data.json();
@@ -58,9 +56,52 @@ export class News extends Component {
     this.setState({
       articles: parsedData.articles,
       loading: false,
-      page: this.state.page - 1
+      page: this.state.page - 1,
     });
-  
+  };
+  page1news = async () => {
+    let url = `https://newsapi.org/v2/everything?q=tesla&from=2025-01-08&sortBy=publishedAt&apiKey=5532c081141b4ef2937c8ba92f1336bf&page=1&pagesize=18`
+    
+       
+    this.setState({ loading: true });
+    let data = await fetch(url);
+    let parsedData = await data.json();
+    console.log(parsedData);
+    this.setState({
+      articles: parsedData.articles,
+      loading: false,
+       
+    });
+    
+  }
+  page2news = async () => {
+    let url = `https://newsapi.org/v2/everything?q=tesla&from=2025-01-08&sortBy=publishedAt&apiKey=5532c081141b4ef2937c8ba92f1336bf&page=2&pagesize=18`
+    
+       
+    this.setState({ loading: true });
+    let data = await fetch(url);
+    let parsedData = await data.json();
+    console.log(parsedData);
+    this.setState({
+      articles: parsedData.articles,
+      loading: false,
+       
+    });
+    
+  }
+  page3news = async () => {
+    let url = `https://newsapi.org/v2/everything?q=tesla&from=2025-01-08&sortBy=publishedAt&apiKey=5532c081141b4ef2937c8ba92f1336bf&page=3&pagesize=18`
+    
+       
+    this.setState({ loading: true });
+    let data = await fetch(url);
+    let parsedData = await data.json();
+    console.log(parsedData);
+    this.setState({
+      articles: parsedData.articles,
+      loading: false,
+       
+    });
     
   }
   render() {
@@ -83,19 +124,37 @@ export class News extends Component {
             );
           })}
         </div>
-        <div className="container">
-          <div class="d-flex mb-3">
-            <div class="p-2">
-              <button type="button" disabled={this.state.page<=1} class="btn btn-dark" onClick={this.handelpreviousClick}>
-                &larr; Previous
-              </button>
-            </div>
-
-            <div class="ms-auto p-2">
-              <button type="button" class="btn btn-dark" onClick={this.handelNextClick}>
-                Next &rarr;
-              </button>
-            </div>
+        <div className="container d-flex justify-content-center align-items-center">
+          <div className="d-flex mb-3">
+            <nav aria-label="Page navigation example">
+              <ul className="pagination">
+                <li className="page-item">
+                  <div className="page-link" onClick={this.handelpreviousClick}>
+                    Previous
+                  </div>
+                </li>
+                <li className="page-item">
+                  <div className="page-link"  onClick={this.page1news}>
+                    1
+                  </div>
+                </li>
+                <li className="page-item">
+                  <div className="page-link"  onClick={this.page2news}>
+                    2
+                  </div>
+                </li>
+                <li className="page-item">
+                  <div className="page-link"  onClick={this.page3news}>
+                    3
+                  </div>
+                </li>
+                <li className="page-item">
+                  <div className="page-link" onClick={this.handelNextClick}>
+                    Next
+                  </div>
+                </li>
+              </ul>
+            </nav>
           </div>
         </div>
       </div>
