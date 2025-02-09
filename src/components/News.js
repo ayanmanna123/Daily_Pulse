@@ -15,7 +15,7 @@ export class News extends Component {
   async componentDidMount() {
     // Correct lifecycle method for data fetching
 
-    let url = `https://newsapi.org/v2/everything?q=tesla&from=2025-01-08&sortBy=publishedAt&apiKey=5532c081141b4ef2937c8ba92f1336bf&pagesize=18`;
+    let url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=5532c081141b4ef2937c8ba92f1336bf&pagesize=18`;
     this.setState({ loading: true });
     let data = await fetch(url);
     let parsedData = await data.json();
@@ -31,7 +31,7 @@ export class News extends Component {
     console.log("Next");
     if (this.state.page + 1 > Math.ceil(this.state.TotalResult / 18)) {
     } else {
-      let url = `https://newsapi.org/v2/everything?q=tesla&from=2025-01-08&sortBy=publishedAt&apiKey=5532c081141b4ef2937c8ba92f1336bf&page=${this.state.page+1}&pagesize=18`
+      let url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=5532c081141b4ef2937c8ba92f1336bf&page=${this.state.page+1}&pagesize=18`
       
          
       this.setState({ loading: true });
@@ -46,7 +46,7 @@ export class News extends Component {
     }
   };
   handelpreviousClick = async () => {
-    let url = `https://newsapi.org/v2/everything?q=tesla&from=2025-01-08&sortBy=publishedAt&apiKey=5532c081141b4ef2937c8ba92f1336bf&page=${this.state.page-1}&pagesize=18`
+    let url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=5532c081141b4ef2937c8ba92f1336bf&page=${this.state.page-1}&pagesize=18`
    
        
     this.setState({ loading: true });
@@ -60,7 +60,7 @@ export class News extends Component {
     });
   };
   page1news = async () => {
-    let url = `https://newsapi.org/v2/everything?q=tesla&from=2025-01-08&sortBy=publishedAt&apiKey=5532c081141b4ef2937c8ba92f1336bf&page=1&pagesize=18`
+    let url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=5532c081141b4ef2937c8ba92f1336bf&page=1&pagesize=18`
     
        
     this.setState({ loading: true });
@@ -75,7 +75,7 @@ export class News extends Component {
     
   }
   page2news = async () => {
-    let url = `https://newsapi.org/v2/everything?q=tesla&from=2025-01-08&sortBy=publishedAt&apiKey=5532c081141b4ef2937c8ba92f1336bf&page=2&pagesize=18`
+    let url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=5532c081141b4ef2937c8ba92f1336bf&page=2&pagesize=18`
     
        
     this.setState({ loading: true });
@@ -90,7 +90,7 @@ export class News extends Component {
     
   }
   page3news = async () => {
-    let url = `https://newsapi.org/v2/everything?q=tesla&from=2025-01-08&sortBy=publishedAt&apiKey=5532c081141b4ef2937c8ba92f1336bf&page=3&pagesize=18`
+    let url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=5532c081141b4ef2937c8ba92f1336bf&page=3&pagesize=18`
     
        
     this.setState({ loading: true });
