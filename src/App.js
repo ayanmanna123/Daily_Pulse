@@ -11,9 +11,7 @@ function App() {
       <NavBar />
       <Routes>
          
-        <Route path="/" element={<News category="general" />} />
-        
-         
+        <Route path="/" element={<News category="general" />} /> 
         <Route exact path="/general" element={<News  key="general" category="general" />} />
         <Route exact path="/entertainment" element={<News  key="entertainment" category="entertainment" />} />
         <Route exact path="/health" element={<News  key="health" category="health" />} />
