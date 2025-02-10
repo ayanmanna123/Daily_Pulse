@@ -10,10 +10,10 @@ function App() {
     <Router>
       <NavBar />
       <Routes>
-        {/* Default route for "/" */}
+         
         <Route path="/" element={<News category="general" />} />
         
-        {/* Other routes */}
+         
         <Route exact path="/general" element={<News  key="general" category="general" />} />
         <Route exact path="/entertainment" element={<News  key="entertainment" category="entertainment" />} />
         <Route exact path="/health" element={<News  key="health" category="health" />} />
