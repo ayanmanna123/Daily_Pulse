@@ -113,6 +113,7 @@ export class News extends Component {
     });
   };
   
+  
   render() {
     return (
       <>
@@ -174,7 +175,7 @@ export class News extends Component {
           </div>
         </nav>
         <h2>Top Headlines</h2>
-
+        
         <div className="container my-3">
           <div className="row my-3">
             {/* Check if articles exist and map */}
@@ -186,6 +187,8 @@ export class News extends Component {
                     discription={element.description ? element.description : ""}
                     imageurl={element.urlToImage}
                     newsUrl={element.url}
+                    publishedAt={element.publishedAt}
+                    author={element.author}
                   />
                 </div>
               );

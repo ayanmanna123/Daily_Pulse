@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+
 export class NavBar extends Component {
   render() {
     return (
@@ -42,6 +43,7 @@ export class NavBar extends Component {
                   type="search"
                   placeholder="Search"
                   aria-label="Search"
+                   
                 />
                 <button className="btn btn-outline-success" type="submit">
                   Search
