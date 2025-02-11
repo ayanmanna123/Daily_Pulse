@@ -28,7 +28,7 @@ export class News extends Component {
 
   async componentDidMount() {
     // Correct lifecycle method for data fetching
-
+    
     let url = `https://newsapi.org/v2/top-headlines?country=us&category=${this.props.category}&apiKey=5532c081141b4ef2937c8ba92f1336bf&pagesize=18`;
     this.setState({ loading: true });
     let data = await fetch(url);
